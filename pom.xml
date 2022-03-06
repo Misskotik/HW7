@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>HW7</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <junit.version>5.6.2</junit.version>
+        <selenium.version>4.0.0</selenium.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <aspectj.version>1.8.13</aspectj.version>
+        <webdrivermanager.version>5.0.3</webdrivermanager.version>
+        <allure.version>2.17.3</allure.version>
+        <allure-maven.version>2.10.0</allure-maven.version>
+        <maven.surefire.plugin>2.22.0</maven.surefire.plugin>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-commons</artifactId>
+            <version>1.8.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-api</artifactId>
+        <version>${junit.version}</version>
+        <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>${selenium.version}</version>
+    </dependency>
+
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+            <scope>test</scope>
+
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <version>${allure.version} </version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <version>2.17.3</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.2.3</version>
+            <scope>test</scope>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.qameta.allure</groupId>-->
+<!--            <artifactId>allure-java-commons</artifactId>-->
+<!--            <version>2.17.3</version>-->
+<!--            <scope>compile</scope>-->
+<!--        </dependency>-->
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+<!--                <version>3.0.0-M5</version>-->
+<!--                <configuration combine.children="append">-->
+<!--                &lt;!&ndash; <excludedGroups></excludedGroups>-->
+<!--                 <groups>tagTest</groups>&ndash;&gt;-->
+                          <version>2.22.1</version>
+                <configuration>
+                    <testFailureIgnore>false</testFailureIgnore>
+                    <!--            &lt;!&ndash;<includes>-->
+                    <!--              <include>org.example.lesson7</include>-->
+                    <!--            </includes>&ndash;&gt;-->
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
+                    <systemProperties>
+                        <property>
+                            <name>junit.jupiter.extensions.autodetection.enabled</name>
+                            <value>true</value>
+                        </property>
+                    </systemProperties>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.junit.platform</groupId>
+                        <artifactId>junit-platform-surefire-provider</artifactId>
+                        <version>1.2.0</version>
+                    </dependency>
+
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-maven.version}</version>
+                <configuration>
+<!--                    <reportVersion>2.4.1</reportVersion>-->
+                    <buildDirectory>/Users/lally/Desktop/HW/HW7</buildDirectory>
+
+                </configuration>
+            </plugin>
+
+
+        </plugins>
+    </build>
+</project>
+
+
+<!--    <properties>-->
+<!--        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+<!--        <maven.compiler.source>11</maven.compiler.source>-->
+<!--        <maven.compiler.target>11</maven.compiler.target>-->
+<!--        <aspectj.version>1.8.10</aspectj.version>-->
+<!--    </properties>-->
+
+<!--    <dependencies>-->
+<!--        <dependency>-->
+<!--            <groupId>org.junit.jupiter</groupId>-->
+<!--            <artifactId>junit-jupiter-engine</artifactId>-->
+<!--            <version>5.6.2</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.junit.jupiter</groupId>-->
+<!--            <artifactId>junit-jupiter-params</artifactId>-->
+<!--            <version>5.6.2</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>ch.qos.logback</groupId>-->
+<!--            <artifactId>logback-classic</artifactId>-->
+<!--            <version>1.2.3</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.seleniumhq.selenium</groupId>-->
+<!--            <artifactId>selenium-java</artifactId>-->
+<!--            <version> 4.0.0</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.github.bonigarcia</groupId>-->
+<!--            <artifactId>webdrivermanager</artifactId>-->
+<!--            <version>5.0.3</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.qameta.allure</groupId>-->
+<!--            <artifactId>allure-junit5</artifactId>-->
+<!--            <version>2.17.3</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--    </dependencies>-->
+
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <artifactId>maven-surefire-plugin</artifactId>-->
+<!--&lt;!&ndash;                <version>3.0.0-M5</version>&ndash;&gt;-->
+<!--&lt;!&ndash;                <configuration combine.children="append">&ndash;&gt;-->
+<!--&lt;!&ndash;                &lt;!&ndash; <excludedGroups></excludedGroups>&ndash;&gt;-->
+<!--&lt;!&ndash;                 <groups>tagTest</groups>&ndash;&gt;&ndash;&gt;-->
+<!--                <version>2.21.0</version>-->
+<!--                <configuration>-->
+<!--                    <testFailureIgnore>false</testFailureIgnore>-->
+<!--                    &lt;!&ndash;<includes>-->
+<!--                      <include>org.example.lesson7</include>-->
+<!--                    </includes>&ndash;&gt;-->
+<!--                    <argLine>-->
+<!--                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"-->
+<!--                    </argLine>-->
+<!--                    <systemProperties>-->
+<!--                        <property>-->
+<!--&lt;!&ndash;            <plugin>&ndash;&gt;-->
+<!--&lt;!&ndash;                <artifactId>maven-surefire-plugin</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;                <version>3.0.0-M5</version>&ndash;&gt;-->
+<!--&lt;!&ndash;                <configuration>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <testFailureIgnore>false</testFailureIgnore>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <argLine>&ndash;&gt;-->
+<!--&lt;!&ndash;                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"&ndash;&gt;-->
+<!--&lt;!&ndash;                    </argLine>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <systemProperties>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <property>&ndash;&gt;-->
+<!--                            <name>junit.jupiter.extensions.autodetection.enabled</name>-->
+<!--                            <value>true</value>-->
+<!--                        </property>-->
+<!--                    </systemProperties>-->
+<!--                </configuration>-->
+<!--                <dependencies>-->
+<!--                    <dependency>-->
+<!--                        <groupId>org.junit.platform</groupId>-->
+<!--                        <artifactId>junit-platform-surefire-provider</artifactId>-->
+<!--                        <version>1.2.0</version>-->
+<!--                    </dependency>-->
+
+<!--                    <dependency>-->
+<!--                    <groupId>org.aspectj</groupId>-->
+<!--                    <artifactId>aspectjweaver</artifactId>-->
+<!--                    <version>${aspectj.version}</version>-->
+<!--                    </dependency>-->
+
+<!--                </dependencies>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>io.qameta.allure</groupId>-->
+<!--                <artifactId>allure-maven</artifactId>-->
+<!--                <version>2.10.0</version>-->
+<!--                <configuration>-->
+<!--                    <reportVersion>2.4.1</reportVersion>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--&lt;!&ndash;                <configuration combine.children="append">&ndash;&gt;-->
+<!--&lt;!&ndash;                    &lt;!&ndash; <excludedGroups></excludedGroups>&ndash;&gt;-->
+<!--&lt;!&ndash;                     <groups>tagTest</groups>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                </configuration>&ndash;&gt;-->
+<!--&lt;!&ndash;            </plugin>&ndash;&gt;-->
+<!--            <plugin>-->
+<!--                <artifactId>maven-failsafe-plugin</artifactId>-->
+<!--                <version>2.12</version>-->
+<!--            </plugin>-->
+<!--&lt;!&ndash;            <plugin>&ndash;&gt;-->
+<!--&lt;!&ndash;                <artifactId>maven-surefire-report-plugin</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;                <version>3.0.0-M5</version>&ndash;&gt;-->
+<!--&lt;!&ndash;            </plugin>&ndash;&gt;-->
+<!--&lt;!&ndash;            &lt;!&ndash; Лечение проблемы для mvn site:   A required class was missing while executing org.apache.maven.plugins:maven-site-plugin:3.3:site: org/apache/maven/doxia/siterenderer/DocumentContent&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <plugin>&ndash;&gt;-->
+<!--&lt;!&ndash;                <groupId>org.apache.maven.plugins</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;                <artifactId>maven-site-plugin</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;                <version>3.7.1</version>&ndash;&gt;-->
+<!--&lt;!&ndash;            </plugin>&ndash;&gt;-->
+<!--&lt;!&ndash;            <plugin>&ndash;&gt;-->
+<!--&lt;!&ndash;                <groupId>org.apache.maven.plugins</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;                <artifactId>maven-project-info-reports-plugin</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;                <version>3.0.0</version>&ndash;&gt;-->
+<!--&lt;!&ndash;            </plugin>&ndash;&gt;-->
+<!--&lt;!&ndash;            <plugin>&ndash;&gt;-->
+<!--&lt;!&ndash;                <groupId>org.apache.maven.plugins</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;                <artifactId>maven-compiler-plugin</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;                <configuration>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <source>8</source>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <target>8</target>&ndash;&gt;-->
+<!--&lt;!&ndash;                </configuration>&ndash;&gt;-->
+<!--&lt;!&ndash;            </plugin>&ndash;&gt;-->
+<!--        </plugins>-->
+<!--    </build>-->
+<!--</project>-->
+
+
